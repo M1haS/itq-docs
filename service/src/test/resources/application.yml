@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  liquibase:
+    change-log: classpath:db/changelog/master.yaml
+
+app:
+  batch-size: 10
+  workers:
+    submit:
+      enabled: false
+    approve:
+      enabled: false
+
+logging:
+  level:
+    com.itq: DEBUG
+    org.hibernate.SQL: WARN

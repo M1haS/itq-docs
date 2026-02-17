@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: itq-doc-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/itq_docs
+    username: itq
+    password: itq_pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/master.yaml
+
+server:
+  port: 8080
+
+app:
+  batch-size: 50
+  workers:
+    submit:
+      enabled: true
+      fixed-delay-ms: 10000
+    approve:
+      enabled: true
+      fixed-delay-ms: 15000
+
+logging:
+  level:
+    com.itq: INFO
+    org.hibernate.SQL: WARN
